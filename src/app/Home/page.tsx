@@ -1,125 +1,109 @@
-// app/page.js
 
-import Image from 'next/image';
+import Image from "next/image";
+import Navbar from "../../../Components/Navbar";
+import Footer from "../../../Components/Footer";
+import Button from "../../../Components/Button";
+import Link from "next/link";
+import { ChevronRight, ArrowRight } from "../../../Components/Icons";
+
+const brands = ["Audi", "BMW", "Mercedes", "Lamborghini", "Ferrari", "Porsche"];
+
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Navigation Bar ............................................................................... */}
-      <nav className="bg-white shadow-lg fixed w-full z-10">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center ">
-              <span className="text-2xl font-bold text-red-600">SpareParts</span>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-8 ml-4" >
-              <a href="#" className="text-gray-700 hover:text-red-600">Home</a>
-              <a href="#" className="text-gray-700 hover:text-red-600">Products</a>
-              <a href="#" className="text-gray-700 hover:text-red-600">Brands</a>
-              <a href="#" className="text-gray-700 hover:text-red-600">Services</a>
-              <a href="#" className="text-gray-700 hover:text-red-600">Contact</a>
-            </div>    
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <Navbar />
 
-            <div className="flex w-full max-w-2xl mx-auto ml-4">
-              <input 
-                type="text" 
-                placeholder="Search parts..." 
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 w-full md:w-auto flex-grow "
-              />
-              <button className="ml-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition whitespace-nowrap flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
-
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section ......................................................................................................*/}
-      <div className="relative pt-16">
-        <div className="absolute inset-0 bg-black opacity-40"></div>
+      {/* Hero Section */}
+      <div className="relative pt-16 h-[90vh] flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30"></div>
         <Image
-          src="/herobg.jpg" 
+          src="/hero.jpg"
           alt="Car Workshop"
           width={1920}
           height={1080}
-          className="w-full h-screen object-cover"
+          className="w-full h-full object-cover object-center"
+          priority
         />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Genuine Car Spare Parts
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
+            <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+              Genuine Car Parts
+            </span>
           </h1>
-          <p className="text-xl text-white mb-8">Quality Parts for Smooth Rides</p>
-          <div className="space-x-4 flex justify-center">
-            <button className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition">
-              Shop Now
-            </button>
-            <button className="bg-white text-red-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition">
-              Learn More
-            </button>
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Premium quality parts for enhanced performance and lasting durability
+          </p>
+          <div className="flex gap-6">
+            <Button 
+              text="Explore" 
+              variant="primary" 
+              className="hover:scale-105 transition-transform px-8 py-4 w-15"
+            />
+            <Button 
+              text="Latest Offers" 
+              variant="secondary" 
+              className="group hover:bg-white/20 px-8 py-4 max-w-15"
+              icon={<ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />}
+            />
           </div>
         </div>
       </div>
 
-      {/* Categories Section ............................................................................................................*/}
-      <div className="max-w-7xl mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Shop By Category</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {['Engine Parts', 'Brake System', 'Electrical', 'Suspension'].map((category) => (
-            <div key={category} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-              <div className="bg-gray-100 h-48 rounded-lg mb-4"></div>
-              <h3 className="text-xl font-semibold mb-2">{category}</h3>
-              <button className="text-red-600 hover:text-red-700">
-                Explore →
-              </button>
+      {/* Brands Section */}
+      <div className="max-w-7xl mx-auto py-24 px-4">
+        <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-gray-800 to-red-600 bg-clip-text text-transparent">
+           Top Brands
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {brands.map((brand) => (
+            <div 
+              key={brand} 
+              className="group relative bg-blue-100 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="bg-gray-100/50 h-40 rounded-xl mb-4 flex items-center justify-center animate-pulse">
+                <Image 
+                  src={`/brands/${brand.toLowerCase()}.svg`}
+                  alt={brand}
+                  width={120}
+                  height={80}
+                  className="opacity-90 grayscale group-hover:grayscale-0 transition-all"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-center text-gray-800 group-hover:text-red-600 transition-colors">
+                {brand}
+              </h3>
+              <Link href={`/brands/${brand.toLowerCase()}`}>
+                <Button 
+                  text="Explore Parts"
+                  variant="text" 
+                  className="mt-4 text-red-600 hover:text-red-700 group"
+                  icon={<ChevronRight className="group-hover:translate-x-1 transition-transform" />}
+                />
+              </Link>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Promo  ..........................................................................................................*/}
-      <div className="bg-red-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Seasonal Sale!</h2>
-          <p className="text-xl mb-8">Get up to 30% off on selected items</p>
-          <button className="bg-white text-red-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition">
-            View Offers
-          </button>
+      {/* Promo Section */}
+      <div className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('/carbon-fiber.png')] bg-cover"></div>
+        <div className="max-w-7xl mx-auto px-4 text-center relative">
+          <h2 className="text-4xl font-bold mb-6">
+            <span className="text-yellow-300">Seasonal Special:</span> Up to 35% Off
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Limited-time offers on premium parts - Upgrade your ride without breaking the bank
+          </p>
+          <Button 
+            text="Shop Deals Now"
+            variant="secondary"
+            className="hover:bg-yellow-400 hover:text-gray-900 px-8 py-4 text-lg"
+          />
         </div>
       </div>
 
-      {/* Footer........................................................................................................................... */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">SpareParts</h3>
-            <p className="text-gray-400">Quality auto parts since 2023</p>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-red-500">About Us</a></li>
-              <li><a href="#" className="hover:text-red-500">Contact</a></li>
-              <li><a href="#" className="hover:text-red-500">Privacy Policy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-red-500">
-                <span className="sr-only">Facebook</span>
-                <svg className="w-6 h-6" fill="currentColor"  viewBox="0 0 24 24"><path d="/f1.svg" /></svg>
-              </a>
-              <a href="#" className="hover:text-red-500">
-                <span className="sr-only">Whatsapp</span>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="/whatsapp.svg" /></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
