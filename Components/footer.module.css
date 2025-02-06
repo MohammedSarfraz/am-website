@@ -1,0 +1,38 @@
+/* Custom color classes */
+.footer-bg {
+    background-color: #64748b; /* bg-slate-500 */
+    border-color: #f3f4f6; /* border-gray-100 */
+  }
+  
+  .footer-text {
+    color: #4b5563; /* text-gray-600 */
+  }
+  
+  .footer-heading {
+    color: #1f2937; /* text-gray-800 */
+  }
+  
+  .footer-brand-gradient {
+    background: linear-gradient(to right, #dc2626, #b91c1c); /* from-red-600 to-red-700 */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .footer-link-hover:hover {
+    color: #dc2626; /* hover:text-red-600 */
+  }
+  
+  .footer-copyright {
+    border-color: #e5e7eb; /* border-gray-200 */
+    color: #4b5563; /* text-gray-600 */
+  }
+  
+  /* Social media hover colors */
+  .hover-fb:hover {
+    color: #1877F2 !important;
+  }
+  
+  .hover-insta:hover {
+    color: #E4405F !important;
+  }

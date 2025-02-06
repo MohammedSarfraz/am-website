@@ -10,7 +10,7 @@ const brands = ["Audi", "BMW", "Mercedes", "Lamborghini", "Ferrari", "Porsche"];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -103,7 +103,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      <Footer/>
     </div>
   );
 }
